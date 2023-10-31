@@ -68,11 +68,6 @@ def get_new_file_from_bucket():
                 indexes_to_delete.append(i)
         data.drop(indexes_to_delete,inplace=True)
     
-        # ADDING CONTACT FULL NAME
-        data['full_name'] = ""
-        for i,row in data.iterrows() :
-            data[i,'full_name'] = row['full_name'] + " " + row['last_name']
-
     except Exception as e :
         print("error when processing the file : "+str(e))
         return ("error when processing the file : "+str(e))
@@ -92,7 +87,7 @@ def get_new_file_from_bucket():
         Hello, a new file of contacts was added to my storage.
         From the file {file_name}, there are {len(data)} contacts that made the cut. The original file held {original_len} contacts.
         You can find the cleaned list of contacts at this adress :
-        https://storage.cloud.google.com/{clean_bucket_name}/{file_name}.csv
+        https://storage.cloud.google.com/{clean_bucket_name}/{blobForUpload_name}
         Have a nice day !
         This in an automated email sent by a Google Cloud Run Service.
         """

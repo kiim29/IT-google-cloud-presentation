@@ -6,7 +6,7 @@ typora-root-url: ./tutorial.assets
 
 ## Setting Up
 
-Kim! This is where you'll pop all your instructions.
+This tutorial explains how to deploy an automation to process contacts files with Google Cloud Run and Google Cloud Storage.
 
 ## Creating a Google Cloud Project
 
@@ -58,3 +58,27 @@ Execute the command `gcloud run deploy it-process-one-file --source . --platform
 
 ![image-2023-10-31-185021](./image-2023-10-31-185021.png)
 
+2. Now we will implement the automatic start of the service, from the Google Cloud interface. From the menu, navigate to Cloud Run : you should see your newly deployed service.
+
+![image-2023-10-31-190414](./image-2023-10-31-190414.png)
+
+3. Click on the service, go to the Triggers tab and select 'Add an Eventarc trigger'. If needed, enable the Eventarc API.
+
+![image-2023-10-31-190802](./image-2023-10-31-190802.png)
+
+4. Change the name of the trigger if you want, select 'Cloud Storage' as a provider of the event and 'event finalized' as the event. Select the bucket `it-files-to-process`.  Grant the necessary authorizations. Save the trigger.
+
+![image-2023-10-31-191120](./image-2023-10-31-191120.png)
+
+
+## Test and use !
+
+1. Download the sample contacts CSV file from : https://letterhub.com/wp-content/uploads/2018/03/100-contacts.csv
+
+2. Modify it a little if you want to test the service properly (for example delete some emails, make some of them invalid etc...)
+
+3. To test your service, just upload the CSV file into the 'IT-files-to-process' bucket.
+
+4. Follow the progression in logs.
+
+![image-2023-10-31-193102](./image-2023-10-31-193102.png)
