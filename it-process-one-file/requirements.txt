@@ -1,0 +1,12 @@
+# https://pypi.org/project/Flask
+Flask==2.2.3
+
+# https://pypi.org/project/gunicorn
+gunicorn==20.1.0
+
+
+tldextract
+pandas
+google-cloud-storage
+google-cloud-run
+gcsfs
